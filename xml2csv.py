@@ -15,8 +15,8 @@ dataset = defaultdict(lambda: defaultdict(str))
 
 for item in main_items:
     id = item["@id"]
-    # dataset[id]['text'] = item["text"]
-    dataset[id]['text'] = 'The fans were depressing and leaves at the matched and it was very exciting'
+    dataset[id]['text'] = item["text"]
+    # dataset[id]['text'] = 'The fans were jump and jumps with jumping leaves at the matched and it was very exciting'
 
 with open("./dataset/train/obesity_standoff_intuitive_annotations_training.xml", 'r') as file:
     keydata= file.read()
