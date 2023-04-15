@@ -3,7 +3,7 @@ import xmltodict
 from collections import defaultdict
 
 # Reading xml file
-with open("./dataset/train/obesity_patient_records_training.xml", 'r') as file:
+with open("./dataset/test/obesity_patient_records_test.xml", 'r') as file:
     maindata = file.read()
 
 # Converting xml to python dictionary (ordered dict)
@@ -18,7 +18,7 @@ for item in main_items:
     dataset[id]['text'] = item["text"]
     # dataset[id]['text'] = 'The fans were jump and jumps with jumping leaves at the matched and it was very exciting'
 
-with open("./dataset/train/obesity_standoff_intuitive_annotations_training.xml", 'r') as file:
+with open("./dataset/test/obesity_standoff_annotations_test_intuitive.xml", 'r') as file:
     keydata= file.read()
 
 # Converting xml to python dictionary (ordered dict)
@@ -74,7 +74,7 @@ for key, val in dataset.items():
     # rows.append([id,t'ext'])
 
 #Writing to CSV
-with open('intuitive.csv', 'w',newline="") as f:
+with open('test_intuitive.csv', 'w',newline="") as f:
     write = csv.writer(f)
     write.writerow(HEADERS)
     write.writerows(rows)
