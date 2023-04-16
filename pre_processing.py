@@ -13,6 +13,7 @@ class PreProcess:
         self.lowercasing()
         self.df['text'] = self.df['text'].apply(self.alph_num)
         self.df['text'] = self.df['text'].apply(self.lemmatize_sentence)
+        self.df[disease] = self.df[disease].apply(self.one_hot_encoding)
 
 
     def lowercasing(self):
@@ -29,6 +30,15 @@ class PreProcess:
                 sentence = sentence.replace(c, "")
         
         return sentence
+    
+    def one_hot_encoding(self, row):
+        if row == 'Y':
+            row = 1.0
+        elif row == 'N':
+            row = 0.0
+        else:
+            row = -1
+        return row
         
     def penn2morphy(self, penntag):
         """ Converts Penn Treebank tags to WordNet. """
