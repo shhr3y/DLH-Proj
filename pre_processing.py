@@ -29,7 +29,7 @@ class PreProcess:
         return row
 
     def remove_alph_num(self, row):
-        row[1] = [token for token in row[1] if token.isalnum]
+        row[1] = list(filter(lambda x: x.isalpha(), row[1]))
         return row
     
     def one_hot_encoding(self, row):
@@ -54,13 +54,10 @@ class PreProcess:
 
     def lemmatize_sentence(self, row):
         # Lemmatize each word, handling variations of "ing" and "ed" suffixes
-        lemmatized_words = [self.lemmatizer.lemmatize(word.lower(), pos=self.penn2morphy(tag)) for word, tag in pos_tag(row[1])]
+        lemmatized_words = [self.lemmatizer.lemmatize(word, pos=self.penn2morphy(tag)) for word, tag in pos_tag(row[1])]
         # Join the lemmatized words back into a sentence
         row[1] = " ".join(lemmatized_words)
+        # print(" ".join(lemmatized_words))
         return row
-
-
-
-        
 
 
