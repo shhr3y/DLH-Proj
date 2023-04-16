@@ -4,40 +4,43 @@ from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag
 
 class PreProcess:
-    def __init__(self, filename, disease) -> None:
-        self.df = pd.read_csv(f'{filename}.csv', usecols= ['id', 'text', disease])
-        self.df = self.df[self.df[disease].isin(['Y', 'N'])]
+    def __init__(self, input, output) -> None:
+        self.df = pd.read_csv(f'{input}.csv')
         # Initialize the lemmatizer
         self.lemmatizer = WordNetLemmatizer()
 
-        self.lowercasing()
-        self.df['text'] = self.df['text'].apply(self.alph_num)
-        self.df['text'] = self.df['text'].apply(self.lemmatize_sentence)
-        self.df[disease] = self.df[disease].apply(self.one_hot_encoding)
+
+        self.df = self.df.apply(self.lowercasing, axis=1)
+        self.df = self.df.apply(self.tokenize, axis=1)
+        self.df = self.df.apply(self.remove_alph_num, axis=1)
+
+        self.df = self.df.apply(self.lemmatize_sentence, axis=1)
+        # print(self.df)
+        self.df = self.df.apply(self.one_hot_encoding, axis=1)
+        self.df.to_csv(f'{output}.csv', index=False)
 
 
-    def lowercasing(self):
-        self.df['text'] = self.df['text'].str.lower()
+    def lowercasing(self, row):
+        row[1] = str.lower(row[1])
+        return row
 
-    def tokenize(self):
-        self.df['text'] = self.df['text'].str.split(' ')
+    def tokenize(self, row):
+        row[1] = nltk.word_tokenize(row[1])
+        return row
 
-    def alph_num(self, sentence):
-        values = list("abcdefghijklmnopqrstuvwxyz ")
-
-        for c in sentence:
-            if c not in values:
-                sentence = sentence.replace(c, "")
-        
-        return sentence
+    def remove_alph_num(self, row):
+        row[1] = [token for token in row[1] if token.isalnum]
+        return row
     
     def one_hot_encoding(self, row):
-        if row == 'Y':
-            row = 1.0
-        elif row == 'N':
-            row = 0.0
-        else:
-            row = -1
+        for row_idx in range(2, len(row)):
+            # print(row[row_idx])
+            if row[row_idx] == 'Y':
+                row[row_idx] = 1.0
+            elif row[row_idx] == 'N':
+                row[row_idx] = 0.0
+            else:
+                row[row_idx] = -1
         return row
         
     def penn2morphy(self, penntag):
@@ -49,13 +52,12 @@ class PreProcess:
         except:
             return 'n' 
 
-    def lemmatize_sentence(self, sentence):
-        words = nltk.word_tokenize(sentence)
+    def lemmatize_sentence(self, row):
         # Lemmatize each word, handling variations of "ing" and "ed" suffixes
-        lemmatized_words = [self.lemmatizer.lemmatize(word.lower(), pos=self.penn2morphy(tag)) for word, tag in pos_tag(words)]
+        lemmatized_words = [self.lemmatizer.lemmatize(word.lower(), pos=self.penn2morphy(tag)) for word, tag in pos_tag(row[1])]
         # Join the lemmatized words back into a sentence
-        sentence = " ".join(lemmatized_words)
-        return sentence
+        row[1] = " ".join(lemmatized_words)
+        return row
 
 
 
