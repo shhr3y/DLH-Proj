@@ -1,0 +1,51 @@
+============================GERD============================
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     pandasdata
+Instances:    487
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(f342 >= 0.025178) and (f45 <= 0.010848) => class=1_0 (20.0/5.0)
+(f219 >= 0.027039) and (f87 >= 0.008847) and (f369 >= 0.00752) => class=1_0 (18.0/2.0)
+(f135 <= 0.014136) and (f43 >= 0.015097) and (f341 <= 0.012198) => class=1_0 (19.0/4.0)
+(f28 <= 0.062781) => class=1_0 (17.0/6.0)
+ => class=0_0 (413.0/58.0)
+
+Number of Rules : 5
+
+
+Time taken to build model: 0.94 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         364               74.7433 %
+Incorrectly Classified Instances       123               25.2567 %
+Kappa statistic                          0.0892
+Mean absolute error                      0.3512
+Root mean squared error                  0.4407
+Relative absolute error                 97.1853 %
+Root relative squared error            103.7565 %
+Total Number of Instances              487     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.938    0.870    0.777      0.938    0.850      0.109    0.519     0.768     0_0
+                 0.130    0.062    0.395      0.130    0.196      0.109    0.519     0.262     1_0
+Weighted Avg.    0.747    0.679    0.687      0.747    0.696      0.109    0.519     0.648     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 349  23 |   a = 0_0
+ 100  15 |   b = 1_0
+

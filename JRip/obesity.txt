@@ -1,0 +1,49 @@
+============================OBESITY============================
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     pandasdata
+Instances:    553
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(f354 >= 0.007925) => class=1_0 (173.0/0.0)
+(f355 >= 0.006641) => class=1_0 (53.0/0.0)
+ => class=0_0 (327.0/13.0)
+
+Number of Rules : 3
+
+
+Time taken to build model: 0.41 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         533               96.3834 %
+Incorrectly Classified Instances        20                3.6166 %
+Kappa statistic                          0.9258
+Mean absolute error                      0.0524
+Root mean squared error                  0.1865
+Relative absolute error                 10.6814 %
+Root relative squared error             37.6481 %
+Total Number of Instances              553     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.990    0.071    0.948      0.990    0.969      0.927    0.949     0.925     0_0
+                 0.929    0.010    0.987      0.929    0.957      0.927    0.949     0.957     1_0
+Weighted Avg.    0.964    0.045    0.965      0.964    0.964      0.927    0.949     0.939     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 311   3 |   a = 0_0
+  17 222 |   b = 1_0
+

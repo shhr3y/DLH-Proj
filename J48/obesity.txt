@@ -1,0 +1,68 @@
+============================OBESITY============================
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     pandasdata
+Instances:    553
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+f354 <= 0
+|   f355 <= 0
+|   |   f45 <= 0.026891
+|   |   |   f158 <= 0.040395
+|   |   |   |   f508 <= 0.058387: 0_0 (265.0/1.0)
+|   |   |   |   f508 > 0.058387
+|   |   |   |   |   f200 <= 0.06195: 0_0 (14.0)
+|   |   |   |   |   f200 > 0.06195: 1_0 (3.0)
+|   |   |   f158 > 0.040395
+|   |   |   |   f1 <= 0
+|   |   |   |   |   f502 <= 0.009556: 0_0 (21.0)
+|   |   |   |   |   f502 > 0.009556: 1_0 (2.0)
+|   |   |   |   f1 > 0: 1_0 (3.0)
+|   |   f45 > 0.026891
+|   |   |   f95 <= 0.026936
+|   |   |   |   f429 <= 0.034962: 0_0 (15.0)
+|   |   |   |   f429 > 0.034962: 1_0 (2.0)
+|   |   |   f95 > 0.026936: 1_0 (2.0)
+|   f355 > 0: 1_0 (53.0)
+f354 > 0: 1_0 (173.0)
+
+Number of Leaves  : 	11
+
+Size of the tree : 	21
+
+
+Time taken to build model: 0.08 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         529               95.66   %
+Incorrectly Classified Instances        24                4.34   %
+Kappa statistic                          0.9116
+Mean absolute error                      0.0467
+Root mean squared error                  0.2008
+Relative absolute error                  9.5136 %
+Root relative squared error             40.5341 %
+Total Number of Instances              553     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.962    0.050    0.962      0.962    0.962      0.912    0.960     0.951     0_0
+                 0.950    0.038    0.950      0.950    0.950      0.912    0.960     0.942     1_0
+Weighted Avg.    0.957    0.045    0.957      0.957    0.957      0.912    0.960     0.947     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 302  12 |   a = 0_0
+  12 227 |   b = 1_0
+

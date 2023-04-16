@@ -1,0 +1,82 @@
+============================DIABETES============================
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     pandasdata
+Instances:    567
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+f139 <= 0
+|   f154 <= 0.015821
+|   |   f458 <= 0.048427
+|   |   |   f76 <= 0.011791
+|   |   |   |   f304 <= 0.033296
+|   |   |   |   |   f103 <= 0.045872: 0_0 (137.0)
+|   |   |   |   |   f103 > 0.045872
+|   |   |   |   |   |   f42 <= 0.011551: 0_0 (5.0)
+|   |   |   |   |   |   f42 > 0.011551: 1_0 (3.0)
+|   |   |   |   f304 > 0.033296
+|   |   |   |   |   f109 <= 0.034068: 0_0 (5.0)
+|   |   |   |   |   f109 > 0.034068: 1_0 (3.0)
+|   |   |   f76 > 0.011791
+|   |   |   |   f584 <= 0.009866
+|   |   |   |   |   f30 <= 0.018999: 1_0 (9.0)
+|   |   |   |   |   f30 > 0.018999: 0_0 (2.0)
+|   |   |   |   f584 > 0.009866: 0_0 (6.0)
+|   |   f458 > 0.048427: 1_0 (11.0)
+|   f154 > 0.015821: 1_0 (48.0)
+f139 > 0
+|   f139 <= 0.014929
+|   |   f192 <= 0.028447
+|   |   |   f595 <= 0.03531
+|   |   |   |   f200 <= 0.020487: 1_0 (43.0)
+|   |   |   |   f200 > 0.020487
+|   |   |   |   |   f61 <= 0.022195: 0_0 (4.0)
+|   |   |   |   |   f61 > 0.022195: 1_0 (3.0)
+|   |   |   f595 > 0.03531: 0_0 (3.0)
+|   |   f192 > 0.028447: 0_0 (6.0)
+|   f139 > 0.014929
+|   |   f361 <= 0.067059: 1_0 (265.0)
+|   |   f361 > 0.067059
+|   |   |   f375 <= 0.055382: 1_0 (11.0)
+|   |   |   f375 > 0.055382: 0_0 (3.0)
+
+Number of Leaves  : 	18
+
+Size of the tree : 	35
+
+
+Time taken to build model: 0.08 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         529               93.2981 %
+Incorrectly Classified Instances        38                6.7019 %
+Kappa statistic                          0.8388
+Mean absolute error                      0.0682
+Root mean squared error                  0.252 
+Relative absolute error                 16.1743 %
+Root relative squared error             54.9168 %
+Total Number of Instances              567     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.865    0.038    0.908      0.865    0.886      0.839    0.913     0.867     0_0
+                 0.962    0.135    0.943      0.962    0.953      0.839    0.913     0.930     1_0
+Weighted Avg.    0.933    0.105    0.932      0.933    0.933      0.839    0.913     0.911     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 148  23 |   a = 0_0
+  15 381 |   b = 1_0
+

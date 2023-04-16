@@ -1,0 +1,49 @@
+============================VENOUS_INSUFFICIENCY============================
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     pandasdata
+Instances:    526
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(f352 >= 0.013384) and (f143 <= 0.006719) => class=1_0 (17.0/5.0)
+(f287 >= 0.012306) and (f163 >= 0.019812) => class=1_0 (13.0/5.0)
+ => class=0_0 (496.0/24.0)
+
+Number of Rules : 3
+
+
+Time taken to build model: 0.67 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         467               88.7833 %
+Incorrectly Classified Instances        59               11.2167 %
+Kappa statistic                         -0.0145
+Mean absolute error                      0.1486
+Root mean squared error                  0.3134
+Relative absolute error                 95.981  %
+Root relative squared error            113.1729 %
+Total Number of Instances              526     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.967    0.977    0.916      0.967    0.940      -0.016   0.499     0.916     0_0
+                 0.023    0.033    0.059      0.023    0.033      -0.016   0.499     0.084     1_0
+Weighted Avg.    0.888    0.898    0.844      0.888    0.865      -0.016   0.499     0.846     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 466  16 |   a = 0_0
+  43   1 |   b = 1_0
+

@@ -1,0 +1,70 @@
+============================HYPERTRIGLYCERIDEMIA============================
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     pandasdata
+Instances:    587
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+f323 <= 0.0537
+|   f293 <= 0.074255
+|   |   f25 <= 0.054641
+|   |   |   f599 <= 0.0409: 0_0 (465.0/7.0)
+|   |   |   f599 > 0.0409
+|   |   |   |   f211 <= 0.084124
+|   |   |   |   |   f301 <= 0.04774: 0_0 (29.0)
+|   |   |   |   |   f301 > 0.04774: 1_0 (4.0/1.0)
+|   |   |   |   f211 > 0.084124: 1_0 (2.0)
+|   |   f25 > 0.054641
+|   |   |   f246 <= 0.010038: 0_0 (21.0/1.0)
+|   |   |   f246 > 0.010038: 1_0 (4.0)
+|   f293 > 0.074255
+|   |   f29 <= 0.012534
+|   |   |   f211 <= 0.02726
+|   |   |   |   f522 <= 0.02147: 1_0 (2.0)
+|   |   |   |   f522 > 0.02147: 0_0 (24.0)
+|   |   |   f211 > 0.02726: 1_0 (2.0)
+|   |   f29 > 0.012534: 1_0 (3.0)
+f323 > 0.0537
+|   f148 <= 0.007848: 1_0 (9.0/1.0)
+|   f148 > 0.007848: 0_0 (22.0/1.0)
+
+Number of Leaves  : 	12
+
+Size of the tree : 	23
+
+
+Time taken to build model: 0.11 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         539               91.8228 %
+Incorrectly Classified Instances        48                8.1772 %
+Kappa statistic                          0.1303
+Mean absolute error                      0.0899
+Root mean squared error                  0.2792
+Relative absolute error                 83.547  %
+Root relative squared error            121.2004 %
+Total Number of Instances              587     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.964    0.848    0.950      0.964    0.957      0.132    0.538     0.947     0_0
+                 0.152    0.036    0.200      0.152    0.172      0.132    0.538     0.086     1_0
+Weighted Avg.    0.918    0.803    0.908      0.918    0.913      0.132    0.538     0.899     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 534  20 |   a = 0_0
+  28   5 |   b = 1_0
+

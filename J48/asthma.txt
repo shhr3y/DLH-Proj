@@ -1,0 +1,60 @@
+============================ASTHMA============================
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     pandasdata
+Instances:    572
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+f45 <= 0
+|   f416 <= 0.015308: 0_0 (461.0/2.0)
+|   f416 > 0.015308
+|   |   f270 <= 0.089436
+|   |   |   f238 <= 0.023148: 0_0 (38.0)
+|   |   |   f238 > 0.023148: 1_0 (3.0/1.0)
+|   |   f270 > 0.089436: 1_0 (3.0)
+f45 > 0
+|   f207 <= 0.034506: 1_0 (59.0)
+|   f207 > 0.034506
+|   |   f41 <= 0.007073: 1_0 (4.0)
+|   |   f41 > 0.007073: 0_0 (4.0)
+
+Number of Leaves  : 	7
+
+Size of the tree : 	13
+
+
+Time taken to build model: 0.07 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         554               96.8531 %
+Incorrectly Classified Instances        18                3.1469 %
+Kappa statistic                          0.8479
+Mean absolute error                      0.0348
+Root mean squared error                  0.1751
+Relative absolute error                 16.1093 %
+Root relative squared error             53.414  %
+Total Number of Instances              572     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.988    0.171    0.976      0.988    0.982      0.849    0.864     0.949     0_0
+                 0.829    0.012    0.906      0.829    0.866      0.849    0.864     0.804     1_0
+Weighted Avg.    0.969    0.152    0.968      0.969    0.968      0.849    0.864     0.931     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 496   6 |   a = 0_0
+  12  58 |   b = 1_0
+

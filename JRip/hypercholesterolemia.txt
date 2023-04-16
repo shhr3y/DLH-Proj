@@ -1,0 +1,48 @@
+============================HYPERCHOLESTEROLEMIA============================
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     pandasdata
+Instances:    502
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(f254 <= 0) and (f299 <= 0) and (f599 <= 0) => class=0_0 (271.0/46.0)
+ => class=1_0 (231.0/15.0)
+
+Number of Rules : 2
+
+
+Time taken to build model: 0.6 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         436               86.8526 %
+Incorrectly Classified Instances        66               13.1474 %
+Kappa statistic                          0.738 
+Mean absolute error                      0.2111
+Root mean squared error                  0.3356
+Relative absolute error                 42.3059 %
+Root relative squared error             67.1861 %
+Total Number of Instances              502     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.929    0.187    0.820      0.929    0.871      0.744    0.868     0.812     0_0
+                 0.813    0.071    0.926      0.813    0.866      0.744    0.868     0.864     1_0
+Weighted Avg.    0.869    0.126    0.875      0.869    0.868      0.744    0.868     0.839     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 223  17 |   a = 0_0
+  49 213 |   b = 1_0
+
