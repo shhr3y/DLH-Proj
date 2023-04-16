@@ -61,3 +61,15 @@ class PreProcess:
         return row
 
 
+
+
+
+
+def main():
+    PreProcess('./dataset/train/train_intuitive', './dataset/train/train_intuitive_preprocessed')
+    PreProcess('./dataset/test/test_intuitive', './dataset/test/test_intuitive_preprocessed')
+
+
+
+if __name__ == '__main__':
+    main()
