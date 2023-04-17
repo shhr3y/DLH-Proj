@@ -1,0 +1,48 @@
+============================ASTHMA============================
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     pandasdata
+Instances:    572
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(f45 >= 0.013509) => class=1_0 (67.0/4.0)
+ => class=0_0 (505.0/7.0)
+
+Number of Rules : 2
+
+
+Time taken to build model: 0.37 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         559               97.7273 %
+Incorrectly Classified Instances        13                2.2727 %
+Kappa statistic                          0.8922
+Mean absolute error                      0.0393
+Root mean squared error                  0.1495
+Relative absolute error                 18.2053 %
+Root relative squared error             45.6275 %
+Total Number of Instances              572     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.990    0.114    0.984      0.990    0.987      0.892    0.906     0.971     0_0
+                 0.886    0.010    0.925      0.886    0.905      0.892    0.906     0.792     1_0
+Weighted Avg.    0.977    0.102    0.977      0.977    0.977      0.892    0.906     0.949     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 497   5 |   a = 0_0
+   8  62 |   b = 1_0
+

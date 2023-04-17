@@ -1,0 +1,48 @@
+============================GALLSTONES============================
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     pandasdata
+Instances:    593
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(f2 >= 0.007782) and (f410 >= 0.031278) => class=1_0 (36.0/16.0)
+ => class=0_0 (557.0/67.0)
+
+Number of Rules : 2
+
+
+Time taken to build model: 0.52 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         499               84.1484 %
+Incorrectly Classified Instances        94               15.8516 %
+Kappa statistic                          0.0369
+Mean absolute error                      0.2413
+Root mean squared error                  0.3623
+Relative absolute error                 96.0319 %
+Root relative squared error            102.3992 %
+Total Number of Instances              593     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.978    0.954    0.856      0.978    0.913      0.055    0.524     0.862     0_0
+                 0.046    0.022    0.267      0.046    0.078      0.055    0.524     0.161     1_0
+Weighted Avg.    0.841    0.817    0.770      0.841    0.791      0.055    0.524     0.759     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 495  11 |   a = 0_0
+  83   4 |   b = 1_0
+

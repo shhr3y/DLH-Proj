@@ -1,0 +1,48 @@
+============================HYPERTENSION============================
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     pandasdata
+Instances:    531
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(f255 <= 0) and (f253 <= 0) => class=0_0 (106.0/16.0)
+ => class=1_0 (425.0/13.0)
+
+Number of Rules : 2
+
+
+Time taken to build model: 0.55 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         501               94.3503 %
+Incorrectly Classified Instances        30                5.6497 %
+Kappa statistic                          0.8219
+Mean absolute error                      0.1017
+Root mean squared error                  0.2277
+Relative absolute error                 32.4446 %
+Root relative squared error             57.5742 %
+Total Number of Instances              531     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.874    0.040    0.841      0.874    0.857      0.822    0.884     0.712     0_0
+                 0.960    0.126    0.969      0.960    0.965      0.822    0.884     0.945     1_0
+Weighted Avg.    0.944    0.109    0.944      0.944    0.944      0.822    0.884     0.900     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+  90  13 |   a = 0_0
+  17 411 |   b = 1_0
+

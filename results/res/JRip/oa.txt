@@ -1,0 +1,48 @@
+============================OA============================
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     pandasdata
+Instances:    565
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(f276 >= 0.014716) => class=1_0 (67.0/28.0)
+ => class=0_0 (498.0/59.0)
+
+Number of Rules : 2
+
+
+Time taken to build model: 0.72 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         475               84.0708 %
+Incorrectly Classified Instances        90               15.9292 %
+Kappa statistic                          0.3312
+Mean absolute error                      0.2441
+Root mean squared error                  0.3583
+Relative absolute error                 84.8767 %
+Root relative squared error             94.6349 %
+Total Number of Instances              565     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.949    0.673    0.870      0.949    0.908      0.349    0.612     0.859     0_0
+                 0.327    0.051    0.571      0.327    0.416      0.349    0.612     0.320     1_0
+Weighted Avg.    0.841    0.566    0.818      0.841    0.822      0.349    0.612     0.765     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 443  24 |   a = 0_0
+  66  32 |   b = 1_0
+

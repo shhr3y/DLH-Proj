@@ -1,0 +1,48 @@
+============================DEPRESSION============================
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     pandasdata
+Instances:    582
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(f136 >= 0.010726) and (f491 <= 0.017599) => class=1_0 (75.0/3.0)
+ => class=0_0 (507.0/50.0)
+
+Number of Rules : 2
+
+
+Time taken to build model: 0.74 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         523               89.8625 %
+Incorrectly Classified Instances        59               10.1375 %
+Kappa statistic                          0.6461
+Mean absolute error                      0.1682
+Root mean squared error                  0.3005
+Relative absolute error                 50.6503 %
+Root relative squared error             73.82   %
+Total Number of Instances              582     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.985    0.426    0.897      0.985    0.939      0.671    0.762     0.890     0_0
+                 0.574    0.015    0.909      0.574    0.704      0.671    0.762     0.652     1_0
+Weighted Avg.    0.899    0.340    0.900      0.899    0.890      0.671    0.762     0.840     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 453   7 |   a = 0_0
+  52  70 |   b = 1_0
+

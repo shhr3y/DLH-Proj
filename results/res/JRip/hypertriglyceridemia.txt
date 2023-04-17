@@ -1,0 +1,48 @@
+============================HYPERTRIGLYCERIDEMIA============================
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     pandasdata
+Instances:    587
+Attributes:   601
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(f323 >= 0.053875) and (f133 <= 0.015586) => class=1_0 (9.0/1.0)
+ => class=0_0 (578.0/25.0)
+
+Number of Rules : 2
+
+
+Time taken to build model: 0.24 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         551               93.8671 %
+Incorrectly Classified Instances        36                6.1329 %
+Kappa statistic                          0.1217
+Mean absolute error                      0.0994
+Root mean squared error                  0.2431
+Relative absolute error                 92.3786 %
+Root relative squared error            105.5284 %
+Total Number of Instances              587     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.989    0.909    0.948      0.989    0.968      0.150    0.521     0.945     0_0
+                 0.091    0.011    0.333      0.091    0.143      0.150    0.521     0.078     1_0
+Weighted Avg.    0.939    0.859    0.914      0.939    0.922      0.150    0.521     0.896     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 548   6 |   a = 0_0
+  30   3 |   b = 1_0
+
