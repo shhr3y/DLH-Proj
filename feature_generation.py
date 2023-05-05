@@ -3,10 +3,8 @@ import collections
 import numpy as np
 from gensim.models import Word2Vec
 from gensim.models import FastText
-import tensorflow_hub as hub
+# import tensorflow_hub as hub
 import collections
-import os
-
 
 MAX_FEATURES=600
 VECTOR_SIZE = 300
@@ -35,7 +33,7 @@ class FeatureGeneration:
 
         X = tfidf_matrix.toarray()
         Y = np.array(self.data[self.disease_name].values)
-        print(X.shape, Y.shape, collections.Counter(list(Y)))
+        
         return X, Y, words
 
     def word2vec(self):
@@ -49,8 +47,8 @@ class FeatureGeneration:
         model = Word2Vec(sentences, vector_size=VECTOR_SIZE, window=5, min_count=1, workers=4)
 
         # finding max length after sorting
-        max_length = sorted(sentences, key=lambda x: len(x), reverse=True)[0]
-
+        
+        max_length = list(sorted([len(sentence) for sentence in sentences], reverse=True))[0]
         X = np.zeros((len(sentences), max_length, VECTOR_SIZE)) 
 
         for idx, sentence in enumerate(sentences):
@@ -78,7 +76,7 @@ class FeatureGeneration:
         self.data['split_text'] = self.data['text'].apply(lambda x: x.split(' '))
         # filtering based on DOCUMENT_LENGTH 
         self.data = self.data[self.data.apply(lambda row: len(row['split_text']) < DOCUMENT_LENGTH, axis=1)]
-        
+
         sentences = self.data['split_text'].values
         # taking top max_length words in sentence
         sentences = [s[:max_length] for s in sentences]
@@ -119,25 +117,29 @@ class FeatureGeneration:
         words = fasttext_model.wv.key_to_index.keys()
         return X, Y, words
 
-    def universal_sentence_encoder(self):
-        # spliting text by ' '
-        self.data['split_text'] = self.data['text'].apply(lambda x: x.split(' '))
-        # filtering based on DOCUMENT_LENGTH 
-        self.data = self.data[self.data.apply(lambda row: len(row['split_text']) < DOCUMENT_LENGTH, axis=1)]
+    # def universal_sentence_encoder(self):
+    #     # spliting text by ' '
+    #     self.data['split_text'] = self.data['text'].apply(lambda x: x.split(' '))
+    #     # filtering based on DOCUMENT_LENGTH 
+    #     self.data = self.data[self.data.apply(lambda row: len(row['split_text']) < DOCUMENT_LENGTH, axis=1)]
 
-        sentences = self.data['split_text'].apply(lambda x: ' '.join(x)).values 
+    #     sentences = self.data['split_text'].apply(lambda x: ' '.join(x)).values 
 
-        embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
-        sentence_embeddings = embed(sentences)
-        embedding_size = sentence_embeddings.shape[-1]
+    #     embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
+    #     sentence_embeddings = embed(sentences)
+    #     embedding_size = sentence_embeddings.shape[-1]
 
 
-        projection_matrix = np.random.randn(embedding_size, VECTOR_SIZE)
+    #     projection_matrix = np.random.randn(embedding_size, VECTOR_SIZE)
 
-        embeddings_300 = np.dot(sentence_embeddings, projection_matrix)
+    #     embeddings_300 = np.dot(sentence_embeddings, projection_matrix)
 
-        num_sentences = len(sentences)
-        Y = np.array(self.data[self.disease_name].values)
-        X = np.reshape(embeddings_300, (num_sentences, 1, VECTOR_SIZE))
+    #     num_sentences = len(sentences)
+    #     Y = np.array(self.data[self.disease_name].values)
+    #     X = np.reshape(embeddings_300, (num_sentences, 1, VECTOR_SIZE))
 
-        return X, Y, []
+    #     return X, Y, []
+
+
+if __name__ == "__main__":
+    print('sdadsa')
