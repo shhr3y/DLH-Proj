@@ -1,6 +1,9 @@
 import csv
 import xmltodict
 from collections import defaultdict
+import os
+
+os.chdir(os.path.dirname(__file__))
 
 # Reading xml file
 with open("./dataset/test/obesity_patient_records_test.xml", 'r') as file:
