@@ -71,7 +71,7 @@ class FeatureGeneration:
                 word, coefs = line.split(maxsplit=1)
                 coefs = np.fromstring(coefs, "f", sep=" ")
                 word_vectors[word] = coefs
-        word_vectors['UNK'] = np.random.rand(self.VECTOR_SIZE)
+        word_vectors['UNK'] = np.random.rand(VECTOR_SIZE)
 
         # spliting text by ' '
         self.data['split_text'] = self.data['text'].apply(lambda x: x.split(' '))
@@ -82,15 +82,15 @@ class FeatureGeneration:
         # taking top max_length words in sentence
         sentences = [s[:max_length] for s in sentences]
 
-        X = np.zeros((len(sentences), max_length, self.VECTOR_SIZE))
+        X = np.zeros((len(sentences), max_length, VECTOR_SIZE))
         for idx, sentence in enumerate(sentences):
             sentence = [word if word in word_vectors else 'UNK' for word in sentence]
             sentence_vectors = [word_vectors.get(word, word_vectors['UNK']) for word in sentence]
-            sentence_vectors += [np.zeros(self.VECTOR_SIZE)] * (max_length - len(sentence))
+            sentence_vectors += [np.zeros(VECTOR_SIZE)] * (max_length - len(sentence))
 
             X[idx, :, :] = np.array(sentence_vectors)
         
-        Y = np.array(self.df[self.disease_name].values.tolist())
+        Y = np.array(self.data[self.disease_name].values.tolist())
         words = list(word_vectors.keys())
         return X, Y, words
     
