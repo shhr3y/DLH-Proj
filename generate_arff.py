@@ -1,6 +1,4 @@
-import pandas as pd
 import numpy as np
-from main import tf_idf
 
 
 def pandas2arff(df,filename,wekaname = "pandasdata",cleanstringdata=True,cleannan=True):
@@ -67,35 +65,3 @@ def pandas2arff(df,filename,wekaname = "pandasdata",cleanstringdata=True,cleanna
     f.close()
     del dfcopy
     return True
-
-
-
-def main():
-    morbidities = ['Asthma', 'CAD', 'CHF', 'Depression', 'Diabetes', 'Gallstones', 'GERD', 'Gout', 'Hypercholesterolemia', 'Hypertension', 'Hypertriglyceridemia', 'OA', 'Obesity', 'OSA', 'PVD', 'Venous_Insufficiency']
-
-    for morbidity in morbidities:
-        print(morbidity)
-        train_preprocessed_df = pd.read_csv('./dataset/train/train_intuitive_preprocessed.csv')[['id', 'text', morbidity]]
-        train_preprocessed_df = train_preprocessed_df[train_preprocessed_df[morbidity].isin([1.0, 0.0])]
-
-        test_preprocessed_df = pd.read_csv('./dataset/test/test_intuitive_preprocessed.csv')[['id', 'text', morbidity]]
-        test_preprocessed_df = test_preprocessed_df[test_preprocessed_df[morbidity].isin([1.0, 0.0])]
-
-        
-        X_train, Y_train, words_train = tf_idf(train_preprocessed_df, morbidity)
-        X_test, Y_test, words_test = tf_idf(test_preprocessed_df, morbidity)
-        
-        X = np.column_stack((X_train, Y_train))
-        no_of_columns = X_train.shape[1]
-        columns = ['f' + str(i) for i in range(no_of_columns)] + ['class']
-        pandas2arff(pd.DataFrame(X, columns=columns), f'./dataset/train/train_{morbidity.lower()}_tfidf.arff')
-        
-        X = np.column_stack((X_test, Y_test))
-        no_of_columns = X_test.shape[1]
-        columns = ['f' + str(i) for i in range(no_of_columns)] + ['class']
-        pandas2arff(pd.DataFrame(X, columns=columns), f'./dataset/test/test_{morbidity.lower()}_tfidf.arff')
-
-
-
-if __name__ == '__main__':
-    main()
